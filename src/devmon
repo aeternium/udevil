@@ -432,7 +432,7 @@ ignoredevice()
 {
 	idx=0
 	while (( idx < igdevx )); do
-		if [ "$1" = "${igdev[$idx]}" ]; then
+        if [ "$1" = "$(readlink -f ${igdev[$idx]})" ]; then
 			echo "devmon: ignored device $1"
 			return 0
 		fi
